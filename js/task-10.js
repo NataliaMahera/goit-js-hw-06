@@ -7,28 +7,59 @@
 
 // Створи функцію destroyBoxes(), яка очищає вміст div#boxes, у такий спосіб видаляючи всі створені елементи.
 
-const refs = {
-  divControls: document.getElementById('controls'),
-  inputNumber: document.querySelector('[type="number"]'),
-  createBtn: document.querySelector('[data-create]'),
-  destroyBtn: document.querySelector('[data-destroy]'),
-  divBoxes: document.getElementById('boxes'),
-};
+// const refs = {
+//   divControls: document.getElementById('controls'),
+//   inputNumber: document.querySelector('[type="number"]'),
+//   createBtn: document.querySelector('[data-create]'),
+//   destroyBtn: document.querySelector('[data-destroy]'),
+//   divBoxes: document.getElementById('boxes'),
+// };
 
-refs.createBtn.addEventListener('click', createBoxes);
-let step = 0;
-function createBoxes(amount) {
-  step += '10px';
+// refs.createBtn.addEventListener('input', createBoxes);
 
-  refs.divBoxes.style.backgroundColor = getRandomHexColor();
-}
+// const createBoxes = (amount) => {
+//   let size = 30;
+//   const boxesArr = [];
+//   for (let i = 0; i < amount; i += 1) {
+//     size += 10 * i;
+//     const div = `<div background-color: ${getRandomHexColor()}; width: ${size}px; height: ${size}px;"></div>`;
+//     boxesArr.push(div);
+//   }
+//   divBoxes.insertAdjacentHTML('beforeend', boxesArr.join(''));
+// };
 
-function destroyBoxes() {
-  refs.divBoxes.innerHTML = '';
-}
+// function destroyBoxes() {
+//   refs.divBoxes.innerHTML = '';
+// }
+const controls = document.querySelector('controls');
+const inputNumberEl = document.querySelector('[type="number"]');
+const createBtnEl = document.querySelector('button[data-create]');
+const destroyBtnEl = document.querySelector('button[data-destroy]');
+const divBoxesEl = document.getElementById('boxes');
 
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
     .toString(16)
     .padStart(6, 0)}`;
+}
+
+createBtnEl.addEventListener('click', () => {
+  createBoxes(Number(inputNumberEl.value));
+});
+
+destroyBtnEl.addEventListener('click', destroyBoxes);
+
+function destroyBoxes() {
+  divBoxesEl.innerHTML = '';
+}
+
+function createBoxes(amount) {
+  let size = 30;
+  const boxesArr = [];
+  for (let i = 0; i < amount; i += 1) {
+    size += 10 * i;
+    const div = `<div class="item" style="display: block; margin-right: 30px; margin-bottom: 30px; background-color: ${getRandomHexColor()}; width: ${size}px; height: ${size}px;"></div>`;
+    boxesArr.push(div);
+  }
+  divBoxesEl.insertAdjacentHTML('beforeend', boxesArr.join(''));
 }
