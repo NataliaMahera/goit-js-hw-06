@@ -12,16 +12,27 @@ const ingredients = ['Potatoes', 'Mushrooms', 'Garlic', 'Tomatos', 'Herbs', 'Con
 // Додасть елементу клас item.
 // Після чого, вставить усі <li> за одну операцію у список ul#ingredients.
 
-const list = document.getElementById('ingredients');
-const makeListElements = (elements) => {
-  return elements.map((ingredient) => {
-    const listItem = document.createElement('li');
-    listItem.textContent = ingredient;
-    listItem.classList.add('item');
-    return listItem;
-  });
-};
+//* 1
+// const list = document.getElementById('ingredients');
+// const makeListElements = (elements) => {
+//   return elements.map((ingredient) => {
+//     const listItem = document.createElement('li');
+//     listItem.textContent = ingredient;
+//     listItem.classList.add('item');
+//     return listItem;
+//   });
+// };
 
-const elements = makeListElements(ingredients);
-list.append(...elements);
+// const elements = makeListElements(ingredients);
+// list.append(...elements);
+// console.log(list);
+//* 2
+
+const list = document.getElementById('ingredients');
+const makeListElements = ingredients
+  .map((ingredient) => `<li class="list-item">${ingredient}</li>`)
+  .join('');
+// console.log(makeListElements);
+
+list.innerHTML = makeListElements;
 console.log(list);
