@@ -11,6 +11,7 @@ const inputData = document.querySelector('[data-length]');
 function onBlurBorderColor() {
   if (Number(inputData.dataset.length) === inputData.value.length) {
     inputRef.classList.add('valid');
+    inputRef.classList.remove('invalid');
   } else {
     inputRef.classList.remove('valid');
     inputRef.classList.add('invalid');
