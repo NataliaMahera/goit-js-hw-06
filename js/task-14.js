@@ -58,9 +58,11 @@ function populateList(markup) {
   refs.list.innerHTML = markup;
 }
 
-// const fuse = new Fuse(tech, {
+// const options = {
+//   includeScore: true,
+//   includeMatches: true,
 //   keys: ['label'],
-// });
+// };
 
-// // 3. Now search!
-// fuse.search('jva');
+// const fuse = new Fuse(tech, options);
+// const result = fuse.search(searchValue);
