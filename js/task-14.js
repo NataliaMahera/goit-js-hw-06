@@ -64,5 +64,5 @@ function populateList(markup) {
 //   keys: ['label'],
 // };
 
-// const fuse = new Fuse(tech, options);
-// const result = fuse.search(searchValue);
+// const fuse = new fuse(tech, options);
+// const result = fuse.search('');
