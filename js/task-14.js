@@ -66,3 +66,29 @@ function populateList(markup) {
 
 // const fuse = new fuse(tech, options);
 // const result = fuse.search('');
+
+// fetch('https://jsonplaceholder.typicode.com/posts/1')
+//   .then((response) => response.json())
+//   .then((json) => console.log(json));
+
+const options = {
+  method: 'POST',
+  headers: {
+    'Content-type': 'application/json',
+  },
+  body: JSON.stringify({
+    title: 'Hello from JS',
+    body: 'gfgfhgh',
+    userId: 12,
+  }),
+};
+
+fetch('https://jsonplaceholder.typicode.com/posts', options)
+  .then((resp) => {
+    if (!resp.ok) {
+      throw new Error(resp.statustext);
+    }
+    return resp.json();
+  })
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err));
